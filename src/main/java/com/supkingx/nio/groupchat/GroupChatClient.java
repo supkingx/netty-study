@@ -95,7 +95,7 @@ public class GroupChatClient {
                 }
             }
         }).start();
-        
+// 测试push权限
         // 发送数据给服务器
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
