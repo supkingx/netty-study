@@ -1,22 +1,18 @@
 package com.supkingx.netty.simple2;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.ChannelPipeline;
 import io.netty.util.CharsetUtil;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /**
  * 说明
  * 1、我们自定义一个 Handler 需要继续netty 规定好的谋和 handlerAdapter(规范)
  * 2、这时我们自定义一个Handler，才能称为一个handler
- *
+ *  Netty  TCP 服务 示例（异步接收）
  * @description:
  * @Author: wangchao
  * @Date: 2021/12/6

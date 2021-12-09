@@ -9,8 +9,8 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
- * @description:
- * @Author: wangchao
+ * @description:  Netty  TCP 服务 示例
+ * @Author: wangchao 
  * @Date: 2021/12/6
  */
 public class NettyServer {
