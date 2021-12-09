@@ -28,6 +28,14 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
      */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        try {
+            Thread.sleep(10 * 1000);
+            ctx.writeAndFlush(Unpooled.copiedBuffer("hello,客户端，你好！", CharsetUtil.UTF_8));
+        } catch (InterruptedException e) {
+            System.out.println("发生异常" + e.getMessage());
+        }
+        
+        
         System.out.println("服务器读取线程 " + Thread.currentThread().getName());
         System.out.println("server ctx=" + ctx);
         System.out.println("看看channel 和 pipeline的关系");

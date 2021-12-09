@@ -1,7 +1,8 @@
-package com.supkingx.netty.simple;
+package com.supkingx.netty.simple2;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -9,8 +10,8 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
- * @description:  Netty  TCP 服务 示例
- * @Author: wangchao 
+ * @description:
+ * @Author: wangchao
  * @Date: 2021/12/6
  */
 public class NettyServer {
@@ -24,7 +25,7 @@ public class NettyServer {
         NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
         // 12核cpu，默认是24个线程 NettyRuntime.availableProcessors() * 2
 //        NioEventLoopGroup workerGroup = new NioEventLoopGroup();
-        
+
         // 方便测试，设置为 3 个线程
         NioEventLoopGroup workerGroup = new NioEventLoopGroup(3);
 
@@ -50,6 +51,18 @@ public class NettyServer {
             // 绑定一个端口并且同步，生成一个 channelFuture 对象
             // 启动服务器并绑定端口
             ChannelFuture cf = bootstrap.bind(6677).sync();
+
+            // 给cf 注册监听器，监控我们关心的事件
+            cf.addListener(new ChannelFutureListener() {
+                @Override
+                public void operationComplete(ChannelFuture future) throws Exception {
+                    if (cf.isSuccess()) {
+                        System.out.println("监听端口 6677 成功");
+                    } else {
+                        System.out.println("监听端口 6677 失败");
+                    }
+                }
+            });
 
             // 对关闭通道进行监听
             cf.channel().closeFuture().sync();
