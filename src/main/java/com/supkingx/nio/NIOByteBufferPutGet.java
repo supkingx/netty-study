@@ -16,15 +16,19 @@ public class NIOByteBufferPutGet {
         byteBuffer.putLong(9);
         byteBuffer.putChar('s');
         byteBuffer.putShort((short) 4);
-        
-        // 取出
-        byteBuffer.flip();
-        System.out.println();
-        System.out.println(byteBuffer.getInt());
-        System.out.println(byteBuffer.getLong());
-        System.out.println(byteBuffer.getChar());
-//        System.out.println(byteBuffer.getShort());
-        // 这会报错 BufferUnderflowException
-        System.out.println(byteBuffer.getLong());
+
+//        // 取出
+//        byteBuffer.flip();
+//        System.out.println();
+//        System.out.println(byteBuffer.getInt());
+//        System.out.println(byteBuffer.getLong());
+//        System.out.println(byteBuffer.getChar());
+////        System.out.println(byteBuffer.getShort());
+//        // 这会报错 BufferUnderflowException
+//        System.out.println(byteBuffer.getLong());
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println(byteBuffer.get(i));
+        }
     }
 }

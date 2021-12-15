@@ -7,6 +7,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
  * @description: Netty  HTTP 服务实例
+ * 浏览器访问：http://localhost:8899/
  * @Author: wangchao
  * @Date: 2021/12/9
  */
