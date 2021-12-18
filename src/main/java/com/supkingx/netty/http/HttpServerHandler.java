@@ -34,8 +34,11 @@ public class HttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
+        System.out.println("对应的channel=" + ctx.channel() + " pipeline=" + ctx.pipeline() + " 通过pipeline获取channel" + ctx.pipeline().channel());
+        System.out.println("当前ctx的handler=" + ctx.handler());
         // 判断 msg 是不是 HttpRequest 请求
         if (msg instanceof HttpRequest) {
+            System.out.println("ctx 的实际类型" + ctx.getClass());
             // 验证浏览器的每一个新窗口都会对应一个新 pipeline 和 handler
             // 如果是在原窗口不停的请求，都是同一个 pipeline 和 handler
             System.out.println("pipeline hashcode" + ctx.pipeline().hashCode() + "; HttpServerHandler hashcode=" + this.hashCode());

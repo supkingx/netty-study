@@ -36,7 +36,7 @@ public class NettyServer {
             bootstrap.group(bossGroup, workerGroup)// 设置两个现场组
                     .channel(NioServerSocketChannel.class) // 使用 NioServerSocketChannel 作为服务器的通道实现
                     .option(ChannelOption.SO_BACKLOG, 128) // 设置线程队列得到连接数
-                    .childOption(ChannelOption.SO_KEEPALIVE, true) // 设置保持活动连接状态
+                    .childOption(ChannelOption.SO_KEEPALIVE, true) // 用来给接收到的通道添加配置 设置保持活动连接状态
                     .childHandler(new ChannelInitializer<SocketChannel>() { // 创建一个通道测试对象（匿名）
                         // 给 pipeline 设置处理器
                         @Override
